@@ -1,0 +1,16 @@
+{
+  "foods": [
+    {
+      "food": "double cheeseburger",
+      "calories": 440,
+      "sugar": 7.5,
+      "fat": 21,
+      "protein": 25.5,
+      "timestamp": "2026-10-13T08:20:52.213Z"
+    }
+  ],
+  "totalCalories": 440,
+  "totalSugar": 7.5,
+  "totalFat": 21,
+  "totalProtein": 25.5
+}

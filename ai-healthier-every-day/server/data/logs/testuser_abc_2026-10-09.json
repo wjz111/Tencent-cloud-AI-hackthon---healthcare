@@ -1,0 +1,16 @@
+{
+  "foods": [
+    {
+      "food": "chicken rice",
+      "calories": 450,
+      "sugar": 1.5,
+      "fat": 18,
+      "protein": 27,
+      "timestamp": "2026-10-09T07:16:43.471Z"
+    }
+  ],
+  "totalCalories": 450,
+  "totalSugar": 1.5,
+  "totalFat": 18,
+  "totalProtein": 27
+}

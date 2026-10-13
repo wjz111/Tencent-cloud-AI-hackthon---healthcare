@@ -1,0 +1,340 @@
+{
+  "users": {
+    "test_user": {
+      "id": "test_user",
+      "profile": {
+        "age": 28,
+        "height": 170,
+        "weight": 65,
+        "gender": "Male"
+      },
+      "goals": [
+        {
+          "metric": "calories",
+          "target": 2000,
+          "unit": "kcal/day",
+          "category": "diet"
+        },
+        {
+          "metric": "sugar",
+          "target": 50,
+          "unit": "g/day",
+          "category": "diet"
+        },
+        {
+          "metric": "water",
+          "target": 2000,
+          "unit": "ml/day",
+          "category": "diet"
+        }
+      ],
+      "longTermMemory": [],
+      "timezone": "Asia/Singapore",
+      "createdAt": "2026-10-06T05:17:39.612Z"
+    },
+    "test_user2": {
+      "id": "test_user2",
+      "profile": null,
+      "goals": [],
+      "longTermMemory": [],
+      "timezone": "Asia/Singapore",
+      "createdAt": "2026-10-06T05:18:28.988Z"
+    },
+    "user_b1g621222muw8av2q": {
+      "id": "user_b1g621222muw8av2q",
+      "profile": {
+        "age": "26",
+        "height": "168",
+        "weight": "71",
+        "gender": "Female",
+        "conditions": "fat liver"
+      },
+      "goals": [
+        {
+          "metric": "calories",
+          "target": 1820,
+          "unit": "kcal/day",
+          "category": "diet"
+        },
+        {
+          "metric": "sugar",
+          "target": 50,
+          "unit": "g/day",
+          "category": "diet"
+        },
+        {
+          "metric": "fat",
+          "target": 76,
+          "unit": "g/day",
+          "category": "diet"
+        },
+        {
+          "metric": "protein",
+          "target": 57,
+          "unit": "g/day",
+          "category": "diet"
+        },
+        {
+          "metric": "water",
+          "target": 2000,
+          "unit": "ml/day",
+          "category": "diet"
+        },
+        {
+          "metric": "steps",
+          "target": 8000,
+          "unit": "steps/day",
+          "category": "exercise"
+        },
+        {
+          "metric": "exercise",
+          "target": 45,
+          "unit": "min/day",
+          "category": "exercise"
+        }
+      ],
+      "longTermMemory": [],
+      "timezone": "Asia/Singapore",
+      "createdAt": "2026-10-06T05:19:01.590Z"
+    },
+    "demo_user": {
+      "id": "demo_user",
+      "profile": {
+        "age": 32,
+        "height": 165,
+        "weight": 72,
+        "gender": "Female",
+        "conditions": "I want to control my cholesterol level"
+      },
+      "goals": [
+        {
+          "metric": "calories",
+          "target": 1800,
+          "unit": "kcal/day",
+          "category": "diet"
+        },
+        {
+          "metric": "sugar",
+          "target": 25,
+          "unit": "g/day",
+          "category": "diet"
+        },
+        {
+          "metric": "fat",
+          "target": 50,
+          "unit": "g/day",
+          "category": "diet"
+        },
+        {
+          "metric": "saturated_fat",
+          "target": 15,
+          "unit": "g/day",
+          "category": "diet"
+        },
+        {
+          "metric": "protein",
+          "target": 58,
+          "unit": "g/day",
+          "category": "diet"
+        },
+        {
+          "metric": "water",
+          "target": 2000,
+          "unit": "ml/day",
+          "category": "diet"
+        },
+        {
+          "metric": "steps",
+          "target": 8000,
+          "unit": "steps/day",
+          "category": "exercise"
+        }
+      ],
+      "longTermMemory": [],
+      "timezone": "Asia/Singapore",
+      "createdAt": "2026-10-06T05:23:05.041Z"
+    }
+  },
+  "chatHistory": {
+    "test_user_2026-10-06": [
+      {
+        "role": "user",
+        "content": "I had chicken rice for lunch",
+        "timestamp": "2026-10-06T05:17:45.258Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Noted! Chicken rice - about 450kcal logged. 450kcal so far today. You have about 1550kcal left for today. 😊",
+        "timestamp": "2026-10-06T05:17:46.048Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Good morning! ☀️ Ready to start a healthy day? What did you have for breakfast?",
+        "timestamp": "2026-10-06T05:17:59.132Z"
+      }
+    ],
+    "test_user2_2026-10-06": [
+      {
+        "role": "user",
+        "content": "I had fried chicken and bubble tea",
+        "timestamp": "2026-10-06T05:18:28.995Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Wah lau, fried chicken and bubble tea ah? That's quite oily you know! 😅 Estimated about 480kcal. Maybe go for something less fried next time? Steady pom pipi!",
+        "timestamp": "2026-10-06T05:18:29.653Z"
+      }
+    ],
+    "user_b1g621222muw8av2q_2026-10-06": [
+      {
+        "role": "assistant",
+        "content": "Good morning! ☀️ Ready to start a healthy day? What did you have for breakfast?",
+        "timestamp": "2026-10-06T05:19:02.718Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Good morning! ☀️ Ready to start a healthy day? What did you have for breakfast?",
+        "timestamp": "2026-10-06T07:36:18.493Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Good morning! ☀️ Ready to start a healthy day? What did you have for breakfast?",
+        "timestamp": "2026-10-06T07:36:50.300Z"
+      },
+      {
+        "role": "user",
+        "content": "I had stew beef and fried hor fan for lunch",
+        "timestamp": "2026-10-06T07:37:22.803Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Wah lau, stew beef and fried hor fan ah? That's quite oily you know! 😅 Estimated about 380kcal. Maybe go for something less fried next time? Steady pom pipi!",
+        "timestamp": "2026-10-06T07:37:23.245Z"
+      },
+      {
+        "role": "user",
+        "content": "but I like beef stew",
+        "timestamp": "2026-10-06T07:37:53.621Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Noted! But I like beef stew - about 380kcal logged. 760kcal so far today. You have about 1060kcal left for today. 😊",
+        "timestamp": "2026-10-06T07:37:54.339Z"
+      }
+    ],
+    "demo_user_2026-10-06": [
+      {
+        "role": "user",
+        "content": "I had nasi lemak for breakfast today",
+        "timestamp": "2026-10-06T05:23:16.474Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Noted! Nasi lemak - about 570kcal logged. 570kcal so far today. You have about 1230kcal left for today. 😊",
+        "timestamp": "2026-10-06T05:23:17.038Z"
+      },
+      {
+        "role": "user",
+        "content": "I also had a kopi and bubble tea",
+        "timestamp": "2026-10-06T05:23:21.615Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Noted! I also had a kopi and bubble tea - about 420kcal logged. 990kcal so far today. You have about 810kcal left for today. 😊",
+        "timestamp": "2026-10-06T05:23:22.172Z"
+      },
+      {
+        "role": "user",
+        "content": "I went for a 30 minute walk this morning",
+        "timestamp": "2026-10-06T05:23:35.661Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Steady! Love that you're staying active! 🏃 How long did you exercise for? Keep it up, you're doing great!",
+        "timestamp": "2026-10-06T05:23:36.118Z"
+      }
+    ]
+  },
+  "dailyLogs": {
+    "test_user_2026-10-06": {
+      "foods": [
+        {
+          "food": "chicken rice",
+          "calories": 450,
+          "sugar": 1.5,
+          "fat": 18,
+          "protein": 27,
+          "timestamp": "2026-10-06T05:17:45.261Z"
+        }
+      ],
+      "totalCalories": 450,
+      "totalSugar": 1.5,
+      "totalFat": 18,
+      "totalProtein": 27
+    },
+    "test_user2_2026-10-06": {
+      "foods": [
+        {
+          "food": "fried chicken and bubble tea",
+          "calories": 480,
+          "sugar": 0,
+          "fat": 28.5,
+          "protein": 43.5,
+          "timestamp": "2026-10-06T05:18:28.999Z"
+        }
+      ],
+      "totalCalories": 480,
+      "totalSugar": 0,
+      "totalFat": 28.5,
+      "totalProtein": 43.5
+    },
+    "user_b1g621222muw8av2q_2026-10-06": {
+      "foods": [
+        {
+          "food": "stew beef and fried hor fan",
+          "calories": 380,
+          "sugar": 0,
+          "fat": 22.5,
+          "protein": 39,
+          "timestamp": "2026-10-06T07:37:22.812Z"
+        },
+        {
+          "food": "but I like beef stew",
+          "calories": 380,
+          "sugar": 0,
+          "fat": 22.5,
+          "protein": 39,
+          "timestamp": "2026-10-06T07:37:53.629Z"
+        }
+      ],
+      "totalCalories": 760,
+      "totalSugar": 0,
+      "totalFat": 45,
+      "totalProtein": 78
+    },
+    "demo_user_2026-10-06": {
+      "foods": [
+        {
+          "food": "nasi lemak",
+          "calories": 570,
+          "sugar": 4.5,
+          "fat": 27,
+          "protein": 15,
+          "timestamp": "2026-10-06T05:23:16.477Z"
+        },
+        {
+          "food": "I also had a kopi and bubble tea",
+          "calories": 420,
+          "sugar": 57,
+          "fat": 6,
+          "protein": 1.5,
+          "timestamp": "2026-10-06T05:23:21.618Z"
+        }
+      ],
+      "totalCalories": 990,
+      "totalSugar": 61.5,
+      "totalFat": 33,
+      "totalProtein": 16.5
+    }
+  }
+}

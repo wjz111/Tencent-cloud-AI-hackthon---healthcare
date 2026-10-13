@@ -1,0 +1,40 @@
+{
+  "id": "testuser_abc",
+  "profile": {
+    "age": 28,
+    "height": 170,
+    "weight": 65,
+    "gender": "Male",
+    "conditions": "want to control cholesterol"
+  },
+  "goals": [
+    {
+      "metric": "calories",
+      "target": 2200,
+      "unit": "kcal/day",
+      "category": "diet"
+    },
+    {
+      "metric": "sugar",
+      "target": 50,
+      "unit": "g/day",
+      "category": "diet"
+    },
+    {
+      "metric": "fat",
+      "target": 60,
+      "unit": "g/day",
+      "category": "diet"
+    },
+    {
+      "metric": "protein",
+      "target": 52,
+      "unit": "g/day",
+      "category": "diet"
+    }
+  ],
+  "longTermMemory": [],
+  "timezone": "Asia/Singapore",
+  "createdAt": "2026-10-09T07:16:34.047Z",
+  "updatedAt": "2026-10-09T07:16:34.078Z"
+}

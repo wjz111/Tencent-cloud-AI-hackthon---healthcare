@@ -1,0 +1,10 @@
+{
+  "name": "ai-healthier-every-day",
+  "version": "1.0.0",
+  "description": "AI Healthier Every Day - Intelligent Support for Long-Term Self-Care",
+  "type": "module",
+  "scripts": {
+    "dev": "node server/index.js",
+    "start": "node server/index.js"
+  }
+}

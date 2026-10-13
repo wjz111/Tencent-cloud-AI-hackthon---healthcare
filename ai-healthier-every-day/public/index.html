@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="en" data-page-node-id="BhH803EWS33w9Z6gQ9bKjR">
+<head data-page-node-id="EyEi2xzPePuFA7eQBTpR7r">
+  <meta charset="UTF-8" data-page-node-id="BJCnmUFNklf3kBT3xgBNQG" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="aFq8xjIOLxe2CdIXiZBAvZ" />
+  <title>AI Healthier Every Day</title>
+  <meta name="description" content="Intelligent Support for Long-Term Self-Care" data-page-node-id="SjY3lZlUAC3uK9huwbzg3k" />
+  <!-- React & ReactDOM served as local files (no CDN dependency) -->
+  <script src="./react.production.min.js"></script>
+  <script src="./react-dom.production.min.js"></script>
+
+  <style>
+
+    :root {
+      --primary: #4CAF50;
+      --primary-dark: #388E3C;
+      --primary-light: #81C784;
+      --primary-bg: #E8F5E9;
+      --accent: #FF7043;
+      --accent-light: #FFAB91;
+      --accent-bg: #FBE9E7;
+      --bg-main: #FAFCFB;
+      --bg-card: #FFFFFF;
+      --bg-soft: #F5F9F6;
+      --text-primary: #1A2E23;
+      --text-secondary: #5C6B63;
+      --text-muted: #8A9B91;
+      --text-light: #FFFFFF;
+      --border: #E0E8E4;
+      --border-light: #EEF3F0;
+      --warning: #FF9800;
+      --warning-bg: #FFF3E0;
+      --danger: #F44336;
+      --danger-bg: #FFEBEE;
+      --info: #2196F3;
+      --shadow-sm: 0 2px 4px rgba(27, 58, 39, 0.06);
+      --shadow-md: 0 4px 12px rgba(27, 58, 39, 0.08);
+      --shadow-lg: 0 8px 24px rgba(27, 58, 39, 0.12);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --radius-full: 9999px;
+      --font-body: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-display: 'Baloo 2', 'Nunito', sans-serif;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; font-family: var(--font-body); background: var(--bg-main); color: var(--text-primary); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    #root { min-height: 100vh; }
+    .app-container { min-height: 100vh; display: flex; flex-direction: column; }
+    .app-nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; background: var(--bg-card); border-bottom: 1px solid var(--border); box-shadow: var(--shadow-sm); position: sticky; top: 0; z-index: 100; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; }
+    .nav-logo { font-size: 28px; animation: heartbeat 2s ease-in-out infinite; }
+    .nav-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--primary-dark); }
+    .nav-links { display: flex; gap: 8px; }
+    .nav-link { padding: 8px 24px; border: none; background: transparent; font-family: var(--font-body); font-size: 15px; font-weight: 600; color: var(--text-secondary); border-radius: var(--radius-full); cursor: pointer; transition: var(--transition); }
+    .nav-link:hover { background: var(--primary-bg); color: var(--primary-dark); }
+    .nav-link.active { background: var(--primary); color: var(--text-light); box-shadow: var(--shadow-sm); }
+    .app-main { flex: 1; display: flex; justify-content: center; overflow-y: auto; }
+    .chat-page { width: 100%; max-width: 1200px; padding: 16px; display: flex; flex-direction: column; }
+    .chat-layout { display: grid; grid-template-columns: 300px 1fr; gap: 16px; height: calc(100vh - 100px); min-height: 500px; }
+    .character-section { display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(160deg, var(--primary-bg) 0%, #D7EEDB 50%, var(--primary-bg) 100%); border-radius: var(--radius-lg); padding: 24px; position: relative; overflow: hidden; }
+    .character-section::before { content: ''; position: absolute; top: -50%; right: -30%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(129,199,132,0.2) 0%, transparent 70%); border-radius: 50%; }
+    .plus-character { position: relative; z-index: 1; animation: float 3s ease-in-out infinite; }
+    .plus-character.talking { animation: bounce 0.5s ease-in-out infinite; }
+    .plus-svg .plus-body { fill: #66BB6A; }
+    .plus-svg .plus-head { fill: #81C784; }
+    .plus-svg .plus-cheek { fill: #FFAB91; opacity: 0.7; }
+    .plus-svg .plus-eye { fill: #1B3A27; }
+    .plus-svg .plus-eye-line { stroke: #1B3A27; stroke-width: 3; stroke-linecap: round; }
+    .plus-svg .plus-eye-shine { fill: #FFFFFF; }
+    .plus-svg .plus-mouth { fill: #1B3A27; }
+    .plus-svg .plus-mouth-smile, .plus-svg .plus-mouth-happy { stroke: #1B3A27; stroke-width: 2.5; fill: none; stroke-linecap: round; }
+    .plus-svg .plus-antenna { stroke: #388E3C; stroke-width: 3; stroke-linecap: round; }
+    .plus-svg .plus-leaf { fill: #FFD54F; }
+    .plus-svg .plus-arm { fill: #66BB6A; }
+    .plus-svg .plus-foot { fill: #4CAF50; }
+    .plus-svg .plus-heart { font-size: 24px; }
+    .character-speech-bubble { position: relative; z-index: 1; margin-top: 16px; padding: 16px 20px; background: var(--bg-card); border-radius: var(--radius-lg); border-bottom-left-radius: 4px; box-shadow: var(--shadow-md); max-width: 260px; font-size: 14px; line-height: 1.6; color: var(--text-primary); text-align: center; word-wrap: break-word; min-height: 60px; display: flex; align-items: center; justify-content: center; }
+    .character-speech-bubble::before { content: ''; position: absolute; top: -8px; left: 30px; width: 16px; height: 16px; background: var(--bg-card); transform: rotate(45deg); }
+    .chat-section { display: flex; flex-direction: column; background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); overflow: hidden; }
+    .chat-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid var(--border-light); }
+    .chat-header h2 { font-family: var(--font-display); font-size: 18px; color: var(--text-primary); }
+    .chat-header-actions { display: flex; gap: 8px; }
+    .history-btn { padding: 6px 16px; border: 1px solid var(--border); background: var(--bg-soft); color: var(--text-secondary); border-radius: var(--radius-full); font-size: 13px; font-weight: 600; cursor: pointer; transition: var(--transition); }
+    .history-btn:hover { background: var(--primary-bg); color: var(--primary-dark); }
+    .history-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .message-list { flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+    .empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; text-align: center; color: var(--text-muted); }
+    .empty-icon { font-size: 48px; margin-bottom: 12px; }
+    .empty-state p { font-size: 16px; font-weight: 600; }
+    .empty-hint { font-size: 14px !important; font-weight: 400 !important; margin-top: 4px; }
+    .welcome-list { list-style: none; padding: 0; margin: 14px 0 18px; max-width: 340px; }
+    .welcome-list li { font-size: 13px; font-weight: 400; text-align: left; padding: 5px 0; color: var(--text-muted); line-height: 1.5; display: flex; align-items: flex-start; gap: 8px; }
+    .welcome-list li span.li-icon { flex-shrink: 0; font-size: 15px; }
+    .welcome-start-hint { font-size: 14px !important; font-weight: 500 !important; margin-top: 10px !important; color: var(--primary) !important; }
+    .message { display: flex; gap: 12px; max-width: 85%; animation: slideIn 0.3s ease-out; }
+    .message.user { align-self: flex-end; flex-direction: row-reverse; }
+    .message-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; background: var(--bg-soft); }
+    .message.assistant .message-avatar { background: var(--primary-bg); }
+    .message.user .message-avatar { background: var(--accent-bg); }
+    .message-content { display: flex; flex-direction: column; gap: 4px; }
+    .message.user .message-content { align-items: flex-end; }
+    .message-text { padding: 12px 16px; border-radius: var(--radius-md); font-size: 15px; line-height: 1.5; word-wrap: break-word; }
+    .message.assistant .message-text { background: var(--primary-bg); color: var(--text-primary); border-bottom-left-radius: 4px; }
+    .message.user .message-text { background: var(--accent); color: var(--text-light); border-bottom-right-radius: 4px; }
+    .message.streaming .message-text { border: 2px solid var(--primary-light); animation: pulse-border 1.5s ease-in-out infinite; }
+    .message-time { font-size: 11px; color: var(--text-muted); }
+    .typing-indicator { display: flex; gap: 4px; padding: 4px 16px 8px; }
+    .typing-indicator span { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; animation: typing 1.4s ease-in-out infinite; }
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+    .message-input-container { padding: 16px 24px; border-top: 1px solid var(--border-light); background: var(--bg-card); }
+    .message-input-form { display: flex; gap: 10px; align-items: flex-end; }
+    .message-input { flex: 1; padding: 12px 16px; border: 2px solid var(--border); border-radius: var(--radius-md); font-family: var(--font-body); font-size: 15px; color: var(--text-primary); background: var(--bg-soft); resize: none; max-height: 120px; min-height: 44px; transition: var(--transition); line-height: 1.4; }
+    .message-input:focus { outline: none; border-color: var(--primary); background: var(--bg-card); box-shadow: 0 0 0 3px rgba(76,175,80,0.1); }
+    .message-input:disabled { opacity: 0.6; cursor: not-allowed; }
+    .send-button { width: 44px; height: 44px; border: none; background: var(--primary); color: var(--text-light); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); flex-shrink: 0; }
+    .send-button:hover:not(:disabled) { background: var(--primary-dark); transform: scale(1.05); }
+    .send-button:disabled { background: var(--border); cursor: not-allowed; }
+    .input-hint { text-align: center; font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+    .history-panel { flex: 1; overflow-y: auto; padding: 24px; }
+    .history-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .history-header h3 { font-family: var(--font-display); font-size: 18px; color: var(--text-primary); }
+    .history-count { font-size: 13px; color: var(--text-muted); background: var(--bg-soft); padding: 4px 12px; border-radius: var(--radius-full); }
+    .history-list { display: flex; flex-direction: column; gap: 12px; }
+    .history-empty { text-align: center; padding: 40px 20px; color: var(--text-muted); }
+    .history-empty-hint { font-size: 13px; margin-top: 8px; }
+    .history-item { padding: 14px 16px; border-radius: var(--radius-md); background: var(--bg-soft); }
+    .history-item.user { background: var(--accent-bg); }
+    .history-item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .history-item-role { font-size: 13px; font-weight: 700; color: var(--text-secondary); }
+    .history-item-time { font-size: 12px; color: var(--text-muted); }
+    .history-item-content { font-size: 14px; line-height: 1.5; color: var(--text-primary); }
+    .profile-page { width: 100%; max-width: 800px; padding: 24px; }
+    .profile-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+    .profile-header h1 { font-family: var(--font-display); font-size: 28px; color: var(--text-primary); }
+    .profile-section { background: var(--bg-card); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 16px; box-shadow: var(--shadow-sm); }
+    .profile-section h2 { font-family: var(--font-display); font-size: 18px; color: var(--text-primary); margin-bottom: 16px; }
+    .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .profile-field { display: flex; flex-direction: column; gap: 6px; }
+    .profile-field.full-width { grid-column: 1 / -1; }
+    .profile-field label { font-size: 13px; font-weight: 600; color: var(--text-secondary); }
+    .profile-field input, .profile-field select, .profile-field textarea { padding: 10px 14px; border: 2px solid var(--border); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 15px; color: var(--text-primary); background: var(--bg-soft); transition: var(--transition); }
+    .profile-field input:focus, .profile-field select:focus, .profile-field textarea:focus { outline: none; border-color: var(--primary); background: var(--bg-card); box-shadow: 0 0 0 3px rgba(76,175,80,0.1); }
+    .field-value { font-size: 15px; font-weight: 600; color: var(--text-primary); padding: 10px 14px; background: var(--bg-soft); border-radius: var(--radius-sm); min-height: 44px; display: flex; align-items: center; }
+    .bmi-display { display: flex; align-items: center; gap: 12px; margin-top: 16px; padding: 12px 20px; background: var(--primary-bg); border-radius: var(--radius-md); }
+    .bmi-label { font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+    .bmi-value { font-size: 28px; font-weight: 800; font-family: var(--font-display); color: var(--primary-dark); }
+    .bmi-category { font-size: 13px; color: var(--text-secondary); padding: 4px 12px; background: var(--bg-card); border-radius: var(--radius-full); }
+    .goals-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+    .goal-card { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: var(--radius-md); background: var(--bg-soft); }
+    .goal-card.diet { border-left: 4px solid var(--primary); }
+    .goal-card.exercise { border-left: 4px solid var(--accent); }
+    .goal-icon { font-size: 24px; }
+    .goal-metric { font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+    .goal-target { font-size: 16px; font-weight: 700; color: var(--text-primary); }
+    .goals-empty { text-align: center; padding: 24px; color: var(--text-muted); }
+    .progress-date { font-size: 14px; color: var(--text-muted); margin-bottom: 16px; }
+    .progress-bars { display: flex; flex-direction: column; gap: 16px; }
+    .progress-bar-item { display: flex; flex-direction: column; gap: 6px; }
+    .progress-bar-header { display: flex; justify-content: space-between; align-items: center; }
+    .progress-metric { font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+    .progress-bar-track { width: 100%; height: 10px; background: var(--bg-soft); border-radius: var(--radius-full); overflow: hidden; }
+    .progress-bar-fill { height: 100%; border-radius: var(--radius-full); transition: width 0.5s ease-out; }
+    .progress-bar-fill.good { background: var(--primary); }
+    .progress-bar-fill.warning { background: var(--warning); }
+    .progress-bar-fill.over { background: var(--danger); }
+    .progress-bar-fill.low { background: var(--info); }
+    .estimation-disclaimer { font-size: 12px; color: var(--text-muted); margin-top: 12px; padding: 10px 14px; background: var(--bg-soft); border-radius: var(--radius-sm); border-left: 3px solid var(--warning); line-height: 1.5; }
+    .memory-list { display: flex; flex-direction: column; gap: 10px; }
+    .memory-item { display: flex; gap: 12px; padding: 12px 16px; background: var(--bg-soft); border-radius: var(--radius-sm); }
+    .memory-key { font-size: 13px; font-weight: 700; color: var(--primary-dark); white-space: nowrap; }
+    .memory-value { font-size: 14px; color: var(--text-primary); }
+    .profile-footer { display: flex; justify-content: center; margin-top: 24px; }
+    .onboarding-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(160deg, var(--primary-bg) 0%, #D7EEDB 100%); padding: 24px; }
+    .onboarding-container { max-width: 600px; width: 100%; background: var(--bg-card); border-radius: var(--radius-xl); padding: 40px; box-shadow: var(--shadow-lg); display: flex; flex-direction: column; align-items: center; min-height: 500px; justify-content: space-between; }
+    .onboarding-character { margin-bottom: 8px; }
+    .onboarding-progress { display: flex; gap: 8px; margin-bottom: 24px; }
+    .progress-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); transition: var(--transition); }
+    .progress-dot.active { background: var(--primary); transform: scale(1.3); }
+    .progress-dot.done { background: var(--primary-light); }
+    .onboarding-content { flex: 1; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .onboarding-step { width: 100%; text-align: center; }
+    .onboarding-step h1, .onboarding-step h2 { font-family: var(--font-display); color: var(--text-primary); margin-bottom: 12px; }
+    .onboarding-step h1 { font-size: 32px; }
+    .onboarding-step h2 { font-size: 24px; }
+    .welcome-text { font-size: 16px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 12px; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .welcome-subtext { font-size: 15px; color: var(--text-muted); }
+    .step-hint { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; }
+    .step-note { font-size: 13px; color: var(--text-muted); margin-top: 16px; padding: 12px; background: var(--bg-soft); border-radius: var(--radius-sm); }
+    .onboarding-form { width: 100%; display: flex; flex-direction: column; gap: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-field { display: flex; flex-direction: column; gap: 6px; text-align: left; }
+    .form-field label { font-size: 13px; font-weight: 600; color: var(--text-secondary); }
+    .form-field input, .form-field select { padding: 12px 16px; border: 2px solid var(--border); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 16px; color: var(--text-primary); background: var(--bg-soft); transition: var(--transition); }
+    .form-field input:focus, .form-field select:focus { outline: none; border-color: var(--primary); background: var(--bg-card); box-shadow: 0 0 0 3px rgba(76,175,80,0.1); }
+    .bmi-preview { margin-top: 16px; padding: 10px 20px; background: var(--primary-bg); border-radius: var(--radius-full); font-size: 14px; font-weight: 700; color: var(--primary-dark); display: inline-block; }
+    .conditions-input { width: 100%; padding: 14px 16px; border: 2px solid var(--border); border-radius: var(--radius-md); font-family: var(--font-body); font-size: 15px; color: var(--text-primary); background: var(--bg-soft); resize: vertical; transition: var(--transition); line-height: 1.5; }
+    .conditions-input:focus { outline: none; border-color: var(--primary); background: var(--bg-card); box-shadow: 0 0 0 3px rgba(76,175,80,0.1); }
+    .goals-preview { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+    .goal-preview-card { display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: var(--bg-soft); border-radius: var(--radius-md); text-align: left; }
+    .goal-preview-card.diet { border-left: 3px solid var(--primary); }
+    .goal-preview-card.exercise { border-left: 3px solid var(--accent); }
+    .goal-preview-icon { font-size: 20px; }
+    .goal-preview-text { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+    .onboarding-nav { display: flex; gap: 12px; margin-top: 24px; width: 100%; justify-content: center; }
+    .btn { padding: 10px 24px; border: none; border-radius: var(--radius-full); font-family: var(--font-body); font-size: 15px; font-weight: 700; cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; gap: 6px; }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-primary { background: var(--primary); color: var(--text-light); box-shadow: var(--shadow-sm); }
+    .btn-primary:hover:not(:disabled) { background: var(--primary-dark); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .btn-secondary { background: var(--bg-soft); color: var(--text-secondary); }
+    .btn-secondary:hover:not(:disabled) { background: var(--border-light); }
+    .btn-edit { background: var(--bg-soft); color: var(--text-secondary); border: 1px solid var(--border); }
+    .btn-edit:hover { background: var(--primary-bg); color: var(--primary-dark); }
+    .btn-save { background: var(--primary); color: var(--text-light); }
+    .btn-save:hover { background: var(--primary-dark); }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+    @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+    @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse-border { 0%, 100% { border-color: var(--primary-light); } 50% { border-color: var(--primary); } }
+    @keyframes typing { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-6px); opacity: 1; } }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+    @media (max-width: 900px) {
+      .chat-layout { grid-template-columns: 1fr; height: auto; }
+      .character-section { flex-direction: row; padding: 16px; justify-content: flex-start; gap: 16px; }
+      .plus-character { animation: none; transform: scale(0.7); transform-origin: center; }
+      .character-speech-bubble { max-width: none; flex: 1; }
+      .chat-section { min-height: 500px; }
+      .profile-grid { grid-template-columns: 1fr; }
+      .goals-preview { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .nav-title { display: none; }
+      .app-nav { padding: 12px 16px; }
+      .chat-page, .profile-page { padding: 12px; }
+      .onboarding-container { padding: 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      .goals-grid { grid-template-columns: 1fr; }
+    }
+  
+  </style>
+</head>
+<body data-page-node-id="kvVDK1OrMB368FhTA2VMf8">
+  <div id="root" data-page-node-id="AU3H7EBFN0lgjcqCyPSteM">
+    <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:sans-serif;background:#FAFCFB;" data-page-node-id="hqzKgEcSxDLtcEP7MYgQq2">
+      <div style="text-align:center;" data-page-node-id="YcWKEsfy8Q4a8TpvKPQxNU">
+        <div style="font-size:40px;margin-bottom:12px;animation:pulse 1.5s ease-in-out infinite;" data-page-node-id="ZLeTLaInvmTdfV6YWrNvO5">♥️</div>
+        <p style="color:#5C6B63;font-size:15px;" data-page-node-id="4l39ZY8zXSHiYmJJVCshjB">Loading AI Healthier Every Day...</p>
+        <p id="js-error" style="color:#F44336;font-size:13px;margin-top:8px;display:none;" data-page-node-id="hk51kF7HvnuRJgjjcpBiY5">If this persists, JavaScript may be blocked.</p>
+      </div>
+    </div>
+    <style>@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}</style>
+    <noscript data-page-node-id="Z2PpEunyXBSK80BCBRJbiE"><p style="color:#F44336;text-align:center;padding:40px;" data-page-node-id="Fn6EljUqGYk6GOL67lslEy">JavaScript is required to run this app.</p></noscript>
+  </div>
+
+  <script>
+    window.onerror = function(msg, url, line, col, err) {
+      var e = document.getElementById('js-error');
+      if (e) { e.style.display = 'block'; e.textContent = 'Error: ' + msg + ' (line ' + line + ')'; }
+    };
+  </script>
+
+  <script>
+
+// Safety guard: if React or ReactDOM failed to load, show a helpful message
+if (typeof React === 'undefined' || typeof ReactDOM === 'undefined') {
+  var errEl = document.getElementById('js-error');
+  if (errEl) {
+    errEl.style.display = 'block';
+    errEl.textContent = 'Failed to load React. Please check your network connection and refresh the page.';
+  }
+} else {
+
+const {
+  useState,
+  useEffect,
+  useRef,
+  useCallback
+} = React;
+const API_BASE = '';
+
+// ============================================================
+// Session & Auth Helpers
+// ============================================================
+
+async function createSession(userId) {
+  const res = await fetch(`${API_BASE}/api/session`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      userId
+    })
+  });
+  if (!res.ok) throw new Error('Failed to create session');
+  const {
+    token
+  } = await res.json();
+  return token;
+}
+
+/**
+ * Hook that manages a session token and provides an authFetch()
+ * that automatically attaches the Authorization header and
+ * re-creates the session on 401.
+ */
+function useSession(userId) {
+  const [token, setToken] = useState(null);
+  const [ready, setReady] = useState(false);
+
+  // Create or restore session on mount
+  useEffect(() => {
+    let active = true;
+    (async () => {
+      try {
+        let t = localStorage.getItem(`aihed_token_${userId}`);
+        // Validate existing token by calling /api/user/data
+        if (t) {
+          const res = await fetch(`${API_BASE}/api/user/data`, {
+            headers: {
+              'Authorization': `Bearer ${t}`
+            }
+          });
+          if (res.ok) {
+            if (active) {
+              setToken(t);
+              setReady(true);
+            }
+            return;
+          }
+        }
+        // Token invalid or missing — create new
+        t = await createSession(userId);
+        if (!active) return;
+        localStorage.setItem(`aihed_token_${userId}`, t);
+        setToken(t);
+        setReady(true);
+      } catch (e) {
+        console.error('Session init failed:', e);
+        // Still set ready so UI can proceed (will show onboarding)
+        if (active) setReady(true);
+      }
+    })();
+    return () => {
+      active = false;
+    };
+  }, [userId]);
+
+  /**
+   * Fetch wrapper that injects the auth token and auto-refreshes on 401.
+   */
+  const authFetch = useCallback(async (url, options = {}) => {
+    let t = token;
+    if (!t) throw new Error('No session token available');
+    const headers = {
+      ...options.headers,
+      'Authorization': `Bearer ${t}`
+    };
+    if (options.body && !headers['Content-Type']) {
+      headers['Content-Type'] = 'application/json';
+    }
+    let res = await fetch(`${API_BASE}${url}`, {
+      ...options,
+      headers
+    });
+    // If 401, re-create session and retry once
+    if (res.status === 401) {
+      t = await createSession(userId);
+      localStorage.setItem(`aihed_token_${userId}`, t);
+      setToken(t);
+      headers['Authorization'] = `Bearer ${t}`;
+      res = await fetch(`${API_BASE}${url}`, {
+        ...options,
+        headers
+      });
+    }
+    return res;
+  }, [token, userId]);
+  return {
+    token,
+    authFetch,
+    ready,
+    setToken
+  };
+}
+
+// ============================================================
+// Client-Side Chat Memory (localStorage)
+// ============================================================
+
+function getTodayDate() {
+  return new Date().toLocaleDateString('en-CA', {
+    timeZone: 'Asia/Singapore'
+  });
+}
+function getChatStorageKey(userId, dateStr) {
+  return `aihed_chat_${userId}_${dateStr || getTodayDate()}`;
+}
+function loadChatFromStorage(userId, dateStr) {
+  try {
+    const key = getChatStorageKey(userId, dateStr);
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : [];
+  } catch {
+    return [];
+  }
+}
+function saveChatToStorage(userId, messages, dateStr) {
+  try {
+    const key = getChatStorageKey(userId, dateStr);
+    localStorage.setItem(key, JSON.stringify(messages));
+  } catch (e) {
+    console.error('Save chat to localStorage:', e);
+  }
+}
+
+/**
+ * Build a text summary of yesterday's chat to send as context.
+ */
+function getYesterdaySummary(userId) {
+  const d = new Date();
+  d.setDate(d.getDate() - 1);
+  const yesterdayStr = d.toLocaleDateString('en-CA', {
+    timeZone: 'Asia/Singapore'
+  });
+  const chat = loadChatFromStorage(userId, yesterdayStr);
+  if (chat.length === 0) return null;
+  const recent = chat.slice(-10);
+  return recent.map(m => `${m.role === 'user' ? 'User' : 'Plus'}: ${m.content}`).join('\n');
+}
+
+// ============================================================
+// SSE Stream Reader (shared utility)
+// ============================================================
+
+async function readSSEStream(res, onChunk, onDone, onError) {
+  const reader = res.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = '';
+  let done = false;
+  while (!done) {
+    const result = await reader.read();
+    done = result.done;
+    const text = decoder.decode(result.value, {
+      stream: true
+    });
+    buffer += text;
+    const lines = buffer.split('\n');
+    buffer = lines.pop(); // keep incomplete last line
+    for (const line of lines) {
+      if (line.startsWith('data: ')) {
+        try {
+          const data = JSON.parse(line.slice(6));
+          if (data.type === 'stream') {
+            onChunk(data.content);
+          } else if (data.type === 'done') {
+            onDone();
+          } else if (data.type === 'error') {
+            onError(data.error);
+          }
+        } catch (e) {/* skip malformed */}
+      }
+    }
+  }
+}
+
+// ===================== Plus Character =====================
+function PlusCharacter({
+  isStreaming = false
+}) {
+  const [mood, setMood] = useState('idle');
+  useEffect(() => {
+    if (isStreaming) {
+      setMood('talking');
+      return;
+    }
+    const moods = ['idle', 'happy', 'blink', 'idle'];
+    let idx = 0;
+    const interval = setInterval(() => {
+      setMood(moods[idx % moods.length]);
+      idx++;
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [isStreaming]);
+  return /*#__PURE__*/React.createElement("div", {
+    className: `plus-character ${mood}`
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "200",
+    height: "240",
+    viewBox: "0 0 200 240",
+    className: "plus-svg"
+  }, /*#__PURE__*/React.createElement("ellipse", {
+    cx: "100",
+    cy: "150",
+    rx: "65",
+    ry: "60",
+    className: "plus-body"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: "100",
+    cy: "90",
+    r: "55",
+    className: "plus-head"
+  }), /*#__PURE__*/React.createElement("ellipse", {
+    cx: "68",
+    cy: "105",
+    rx: "12",
+    ry: "8",
+    className: "plus-cheek"
+  }), /*#__PURE__*/React.createElement("ellipse", {
+    cx: "132",
+    cy: "105",
+    rx: "12",
+    ry: "8",
+    className: "plus-cheek"
+  }), mood === 'blink' ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("line", {
+    x1: "75",
+    y1: "85",
+    x2: "88",
+    y2: "85",
+    className: "plus-eye-line"
+  }), /*#__PURE__*/React.createElement("line", {
+    x1: "112",
+    y1: "85",
+    x2: "125",
+    y2: "85",
+    className: "plus-eye-line"
+  })) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("circle", {
+    cx: "82",
+    cy: "85",
+    r: mood === 'talking' ? 8 : 9,
+    className: "plus-eye"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: "118",
+    cy: "85",
+    r: mood === 'talking' ? 8 : 9,
+    className: "plus-eye"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: "84",
+    cy: "83",
+    r: "3.5",
+    className: "plus-eye-shine"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: "120",
+    cy: "83",
+    r: "3.5",
+    className: "plus-eye-shine"
+  })), mood === 'talking' ? /*#__PURE__*/React.createElement("ellipse", {
+    cx: "100",
+    cy: "112",
+    rx: "10",
+    ry: "7",
+    className: "plus-mouth"
+  }) : mood === 'happy' ? /*#__PURE__*/React.createElement("path", {
+    d: "M 85 108 Q 100 125 115 108",
+    className: "plus-mouth-happy"
+  }) : /*#__PURE__*/React.createElement("path", {
+    d: "M 88 110 Q 100 120 112 110",
+    className: "plus-mouth-smile"
+  }), /*#__PURE__*/React.createElement("line", {
+    x1: "100",
+    y1: "40",
+    x2: "100",
+    y2: "25",
+    className: "plus-antenna"
+  }), /*#__PURE__*/React.createElement("circle", {
+    cx: "100",
+    cy: "22",
+    r: "8",
+    className: "plus-leaf"
+  }), /*#__PURE__*/React.createElement("ellipse", {
+    cx: "35",
+    cy: "140",
+    rx: "12",
+    ry: "20",
+    className: "plus-arm",
+    transform: "rotate(-20 35 140)"
+  }), /*#__PURE__*/React.createElement("ellipse", {
+    cx: "165",
+    cy: "140",
+    rx: "12",
+    ry: "20",
+    className: "plus-arm",
+    transform: "rotate(20 165 140)"
+  }), /*#__PURE__*/React.createElement("ellipse", {
+    cx: "75",
+    cy: "210",
+    rx: "18",
+    ry: "12",
+    className: "plus-foot"
+  }), /*#__PURE__*/React.createElement("ellipse", {
+    cx: "125",
+    cy: "210",
+    rx: "18",
+    ry: "12",
+    className: "plus-foot"
+  }), /*#__PURE__*/React.createElement("text", {
+    x: "100",
+    y: "165",
+    textAnchor: "middle",
+    className: "plus-heart"
+  }, "💚")));
+}
+
+// ===================== Chat Page =====================
+function ChatPage({
+  authFetch,
+  userId,
+  onNavigate,
+  refreshTrigger
+}) {
+  const [messages, setMessages] = useState([]);
+  const [streamingText, setStreamingText] = useState('');
+  const [isStreaming, setIsStreaming] = useState(false);
+  const [showHistory, setShowHistory] = useState(false);
+  const [exporting, setExporting] = useState(false);
+  const messagesEndRef = useRef(null);
+
+  // Load today's chat from localStorage on mount
+  useEffect(() => {
+    const stored = loadChatFromStorage(userId);
+    if (stored.length > 0) setMessages(stored);
+  }, [userId]);
+
+  // Persist chat to localStorage whenever messages change
+  useEffect(() => {
+    if (messages.length > 0) saveChatToStorage(userId, messages);
+  }, [messages, userId]);
+
+  // Auto-scroll
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({
+      behavior: 'smooth'
+    });
+  }, [messages, streamingText]);
+  const handleSend = async text => {
+    if (!text.trim() || isStreaming) return;
+    const userMsg = {
+      role: 'user',
+      content: text,
+      timestamp: new Date().toISOString()
+    };
+    // Optimistically add user message
+    setMessages(prev => [...prev, userMsg]);
+    setIsStreaming(true);
+    setStreamingText('');
+    let buffer = '';
+    // Build full chat history including the message just sent
+    const chatHistory = [...messages, userMsg].map(m => ({
+      role: m.role,
+      content: m.content,
+      timestamp: m.timestamp
+    }));
+    const yesterdaySummary = getYesterdaySummary(userId);
+    try {
+      const res = await authFetch('/api/chat', {
+        method: 'POST',
+        body: JSON.stringify({
+          message: text,
+          agentType: 'conversation',
+          chatHistory,
+          yesterdaySummary
+        })
+      });
+      if (!res.ok) throw new Error(`Chat failed: ${res.status}`);
+      await readSSEStream(res, chunk => {
+        buffer += chunk;
+        setStreamingText(buffer);
+      }, () => {
+        if (buffer) {
+          const newMsg = {
+            role: 'assistant',
+            content: buffer,
+            timestamp: new Date().toISOString()
+          };
+          setMessages(prev => [...prev, newMsg]);
+        }
+        setStreamingText('');
+        setIsStreaming(false);
+      }, err => {
+        console.error('Chat error:', err);
+        setStreamingText('');
+        setIsStreaming(false);
+      });
+    } catch (e) {
+      console.error('Chat:', e);
+      setIsStreaming(false);
+    }
+  };
+
+  // Export today's chat as a Markdown file (stored on user's local machine)
+  const handleExport = async () => {
+    if (messages.length === 0) return;
+    setExporting(true);
+    try {
+      const dateStr = getTodayDate();
+      const res = await authFetch('/api/export-chat', {
+        method: 'POST',
+        body: JSON.stringify({
+          chatHistory: messages,
+          date: dateStr
+        })
+      });
+      if (res.ok) {
+        const {
+          markdown
+        } = await res.json();
+        const blob = new Blob([markdown], {
+          type: 'text/markdown'
+        });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `chat_${userId}_${dateStr}.md`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }
+    } catch (e) {
+      console.error('Export:', e);
+    }
+    setExporting(false);
+  };
+  const handleClearHistory = () => {
+    if (confirm('Clear today\'s chat history from your browser? This only affects your local device.')) {
+      localStorage.removeItem(getChatStorageKey(userId));
+      setMessages([]);
+    }
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    className: "chat-page"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "chat-layout"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "character-section"
+  }, /*#__PURE__*/React.createElement(PlusCharacter, {
+    isStreaming: isStreaming
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "character-speech-bubble"
+  }, streamingText || (messages.length > 0 ? messages[messages.length - 1].content : 'Hi! I am Plus, your health buddy! 💚'))), /*#__PURE__*/React.createElement("div", {
+    className: "chat-section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "chat-header"
+  }, /*#__PURE__*/React.createElement("h2", null, "Chat with Plus"), /*#__PURE__*/React.createElement("div", {
+    className: "chat-header-actions"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "history-btn",
+    onClick: handleExport,
+    disabled: messages.length === 0 || exporting
+  }, exporting ? '⏳' : '📥', " Export"), /*#__PURE__*/React.createElement("button", {
+    className: "history-btn",
+    onClick: () => {
+      setShowHistory(!showHistory);
+    }
+  }, showHistory ? '✕ Close' : '📜 History'))), showHistory ? /*#__PURE__*/React.createElement("div", {
+    className: "history-panel"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "history-header"
+  }, /*#__PURE__*/React.createElement("h3", null, "Today's Chat History"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: '8px',
+      alignItems: 'center'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "history-count"
+  }, messages.length, " messages"), /*#__PURE__*/React.createElement("button", {
+    className: "history-btn",
+    onClick: handleClearHistory,
+    disabled: messages.length === 0
+  }, "🗑 Clear"))), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: '12px',
+      color: 'var(--text-muted)',
+      marginBottom: '16px'
+    }
+  }, "Stored locally on your device. Server does not retain chat history."), /*#__PURE__*/React.createElement("div", {
+    className: "history-list"
+  }, messages.length === 0 ? /*#__PURE__*/React.createElement("div", {
+    className: "history-empty"
+  }, /*#__PURE__*/React.createElement("p", null, "No messages today yet."), /*#__PURE__*/React.createElement("p", {
+    className: "history-empty-hint"
+  }, "Say hi to Plus to start your health journey!")) : messages.map((msg, idx) => /*#__PURE__*/React.createElement("div", {
+    key: idx,
+    className: `history-item ${msg.role}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "history-item-header"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "history-item-role"
+  }, msg.role === 'user' ? '😊 You' : '💚 Plus'), /*#__PURE__*/React.createElement("span", {
+    className: "history-item-time"
+  }, new Date(msg.timestamp).toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit'
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "history-item-content"
+  }, msg.content))))) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: "message-list"
+  }, messages.length === 0 && !streamingText && /*#__PURE__*/React.createElement("div", {
+    className: "empty-state"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "empty-icon"
+  }, "💚"), /*#__PURE__*/React.createElement("p", null, "Hi! I'm Plus, your health buddy!"), /*#__PURE__*/React.createElement("p", {
+    className: "empty-hint"
+  }, "Here's how I can help you today:"), /*#__PURE__*/React.createElement("ul", {
+    className: "welcome-list"
+  }, [/*#__PURE__*/React.createElement("li", { key: 1 }, /*#__PURE__*/React.createElement("span", { className: "li-icon" }, "🍽️"), " Log meals and get instant nutrition estimates"), /*#__PURE__*/React.createElement("li", { key: 2 }, /*#__PURE__*/React.createElement("span", { className: "li-icon" }, "📊"), " Track daily progress toward your goals"), /*#__PURE__*/React.createElement("li", { key: 3 }, /*#__PURE__*/React.createElement("span", { className: "li-icon" }, "🎯"), " Set personalized calorie & nutrition targets"), /*#__PURE__*/React.createElement("li", { key: 4 }, /*#__PURE__*/React.createElement("span", { className: "li-icon" }, "💬"), " Ask health questions anytime, I'm here 24/7"), /*#__PURE__*/React.createElement("li", { key: 5 }, /*#__PURE__*/React.createElement("span", { className: "li-icon" }, "📋"), " Export your chat history to keep a record")]), /*#__PURE__*/React.createElement("p", {
+    className: "welcome-start-hint"
+  }, "Tell me what you had for lunch to get started!")), messages.map((msg, idx) => /*#__PURE__*/React.createElement("div", {
+    key: idx,
+    className: `message ${msg.role}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "message-avatar"
+  }, msg.role === 'user' ? '😊' : '💚'), /*#__PURE__*/React.createElement("div", {
+    className: "message-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "message-text"
+  }, msg.content), /*#__PURE__*/React.createElement("div", {
+    className: "message-time"
+  }, new Date(msg.timestamp).toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit'
+  }))))), isStreaming && streamingText && /*#__PURE__*/React.createElement("div", {
+    className: "message assistant streaming"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "message-avatar"
+  }, "💚"), /*#__PURE__*/React.createElement("div", {
+    className: "message-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "message-text"
+  }, streamingText), /*#__PURE__*/React.createElement("div", {
+    className: "typing-indicator"
+  }, /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null)))), /*#__PURE__*/React.createElement("div", {
+    ref: messagesEndRef
+  })), /*#__PURE__*/React.createElement(MessageInput, {
+    onSend: handleSend,
+    disabled: isStreaming
+  })))));
+}
+
+// ===================== Message Input =====================
+function MessageInput({
+  onSend,
+  disabled
+}) {
+  const [text, setText] = useState('');
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (text.trim() && !disabled) {
+      onSend(text.trim());
+      setText('');
+    }
+  };
+  const handleKeyDown = e => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    className: "message-input-container"
+  }, /*#__PURE__*/React.createElement("form", {
+    onSubmit: handleSubmit,
+    className: "message-input-form"
+  }, /*#__PURE__*/React.createElement("textarea", {
+    className: "message-input",
+    value: text,
+    onChange: e => setText(e.target.value),
+    onKeyDown: handleKeyDown,
+    placeholder: disabled ? 'Plus is thinking...' : 'Type your message... (e.g., "I had chicken rice for lunch")',
+    disabled: disabled,
+    rows: 1,
+    maxLength: 500
+  }), /*#__PURE__*/React.createElement("button", {
+    type: "submit",
+    className: "send-button",
+    disabled: disabled || !text.trim()
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "20",
+    height: "20",
+    viewBox: "0 0 24 24",
+    fill: "none"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  })))), /*#__PURE__*/React.createElement("div", {
+    className: "input-hint"
+  }, "Press Enter to send • Shift+Enter for new line"));
+}
+
+// ===================== Profile Page =====================
+function ProfilePage({
+  authFetch,
+  userId,
+  onNavigate,
+  onProfileUpdate,
+  refreshKey
+}) {
+  const [userData, setUserData] = useState(null);
+  const [progress, setProgress] = useState(null);
+  const [editing, setEditing] = useState(false);
+  const [profile, setProfile] = useState({
+    age: '',
+    height: '',
+    weight: '',
+    gender: '',
+    conditions: ''
+  });
+  const [goals, setGoals] = useState([]);
+  const fetchUserData = useCallback(async () => {
+    try {
+      const res = await authFetch('/api/user/data');
+      if (res.ok) {
+        const data = await res.json();
+        setUserData(data);
+        setProfile({
+          age: data.profile?.age || '',
+          height: data.profile?.height || '',
+          weight: data.profile?.weight || '',
+          gender: data.profile?.gender || '',
+          conditions: data.profile?.conditions || ''
+        });
+        setGoals(data.goals || []);
+      }
+    } catch (e) {
+      console.error('UserData:', e);
+    }
+  }, [authFetch]);
+  const fetchProgress = useCallback(async () => {
+    try {
+      const res = await authFetch('/api/user/progress');
+      if (res.ok) setProgress(await res.json());
+    } catch (e) {
+      console.error('Progress:', e);
+    }
+  }, [authFetch]);
+  useEffect(() => {
+    fetchUserData();
+    fetchProgress();
+  }, [fetchUserData, fetchProgress]);
+  useEffect(() => {
+    if (refreshKey) {
+      fetchProgress();
+    }
+  }, [refreshKey, fetchProgress]);
+  useEffect(() => {
+    const i = setInterval(fetchProgress, 30000);
+    return () => clearInterval(i);
+  }, [fetchProgress]);
+  const handleSave = async () => {
+    let generatedGoals = [...goals];
+    const bmi = profile.height && profile.weight ? profile.weight / Math.pow(profile.height / 100, 2) : null;
+    if (generatedGoals.length === 0 || editing && profile.conditions !== userData.profile?.conditions) {
+      generatedGoals = generateDefaultGoals(profile, bmi);
+    }
+    await onProfileUpdate(profile, generatedGoals);
+    setEditing(false);
+    fetchProgress();
+  };
+  if (!userData) return /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: 40,
+      textAlign: 'center'
+    }
+  }, "Loading...");
+  return /*#__PURE__*/React.createElement("div", {
+    className: "profile-page"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "profile-header"
+  }, /*#__PURE__*/React.createElement("h1", null, "Your Health Profile"), /*#__PURE__*/React.createElement("button", {
+    className: `btn ${editing ? 'btn-save' : 'btn-edit'}`,
+    onClick: () => editing ? handleSave() : setEditing(true)
+  }, editing ? '✓ Save' : '✎ Edit')), /*#__PURE__*/React.createElement("div", {
+    className: "profile-section"
+  }, /*#__PURE__*/React.createElement("h2", null, "Basic Information"), /*#__PURE__*/React.createElement("div", {
+    className: "profile-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "profile-field"
+  }, /*#__PURE__*/React.createElement("label", null, "Age"), editing ? /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    value: profile.age,
+    onChange: e => setProfile({
+      ...profile,
+      age: e.target.value
+    }),
+    placeholder: "e.g., 28"
+  }) : /*#__PURE__*/React.createElement("span", {
+    className: "field-value"
+  }, profile.age || 'Not set', " ", profile.age && 'years')), /*#__PURE__*/React.createElement("div", {
+    className: "profile-field"
+  }, /*#__PURE__*/React.createElement("label", null, "Height"), editing ? /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    value: profile.height,
+    onChange: e => setProfile({
+      ...profile,
+      height: e.target.value
+    }),
+    placeholder: "e.g., 170"
+  }) : /*#__PURE__*/React.createElement("span", {
+    className: "field-value"
+  }, profile.height ? `${profile.height} cm` : 'Not set')), /*#__PURE__*/React.createElement("div", {
+    className: "profile-field"
+  }, /*#__PURE__*/React.createElement("label", null, "Weight"), editing ? /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    value: profile.weight,
+    onChange: e => setProfile({
+      ...profile,
+      weight: e.target.value
+    }),
+    placeholder: "e.g., 65"
+  }) : /*#__PURE__*/React.createElement("span", {
+    className: "field-value"
+  }, profile.weight ? `${profile.weight} kg` : 'Not set')), /*#__PURE__*/React.createElement("div", {
+    className: "profile-field"
+  }, /*#__PURE__*/React.createElement("label", null, "Gender"), editing ? /*#__PURE__*/React.createElement("select", {
+    value: profile.gender,
+    onChange: e => setProfile({
+      ...profile,
+      gender: e.target.value
+    })
+  }, /*#__PURE__*/React.createElement("option", {
+    value: ""
+  }, "Select"), /*#__PURE__*/React.createElement("option", {
+    value: "Male"
+  }, "Male"), /*#__PURE__*/React.createElement("option", {
+    value: "Female"
+  }, "Female"), /*#__PURE__*/React.createElement("option", {
+    value: "Other"
+  }, "Other")) : /*#__PURE__*/React.createElement("span", {
+    className: "field-value"
+  }, profile.gender || 'Not set'))), profile.height && profile.weight && /*#__PURE__*/React.createElement("div", {
+    className: "bmi-display"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "bmi-label"
+  }, "BMI"), /*#__PURE__*/React.createElement("span", {
+    className: "bmi-value"
+  }, (profile.weight / Math.pow(profile.height / 100, 2)).toFixed(1)), /*#__PURE__*/React.createElement("span", {
+    className: "bmi-category"
+  }, (() => {
+    const bmi = profile.weight / Math.pow(profile.height / 100, 2);
+    if (bmi < 18.5) return '(Underweight)';
+    if (bmi < 25) return '(Healthy)';
+    if (bmi < 30) return '(Overweight)';
+    return '(Obese)';
+  })()))), /*#__PURE__*/React.createElement("div", {
+    className: "profile-section"
+  }, /*#__PURE__*/React.createElement("h2", null, "Health Conditions (Optional)"), /*#__PURE__*/React.createElement("div", {
+    className: "profile-field full-width"
+  }, editing ? /*#__PURE__*/React.createElement("textarea", {
+    value: profile.conditions,
+    onChange: e => setProfile({
+      ...profile,
+      conditions: e.target.value
+    }),
+    placeholder: "e.g., high cholesterol, prediabetes, or 'I want to control my sugar intake'",
+    rows: 3
+  }) : /*#__PURE__*/React.createElement("span", {
+    className: "field-value"
+  }, profile.conditions || 'No health conditions specified.'))), /*#__PURE__*/React.createElement("div", {
+    className: "profile-section"
+  }, /*#__PURE__*/React.createElement("h2", null, "Health Goals & Daily Targets"), /*#__PURE__*/React.createElement("div", {
+    className: "goals-grid"
+  }, goals.length === 0 ? /*#__PURE__*/React.createElement("div", {
+    className: "goals-empty"
+  }, /*#__PURE__*/React.createElement("p", null, "No goals set yet. Save your profile to auto-generate health targets!")) : goals.map((goal, idx) => /*#__PURE__*/React.createElement("div", {
+    key: idx,
+    className: `goal-card ${goal.category}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "goal-icon"
+  }, goal.category === 'diet' ? '🍽️' : '🏃'), /*#__PURE__*/React.createElement("div", {
+    className: "goal-info"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "goal-metric"
+  }, formatMetric(goal.metric)), /*#__PURE__*/React.createElement("div", {
+    className: "goal-target"
+  }, goal.target, " ", goal.unit)))))), progress && /*#__PURE__*/React.createElement("div", {
+    className: "profile-section"
+  }, /*#__PURE__*/React.createElement("h2", null, "Today's Progress"), /*#__PURE__*/React.createElement("div", {
+    className: "progress-date"
+  }, progress.date), /*#__PURE__*/React.createElement("div", {
+    className: "progress-bars"
+  }, progress.progress.map((item, idx) => /*#__PURE__*/React.createElement("div", {
+    key: idx,
+    className: "progress-bar-item"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "progress-bar-header"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "progress-metric"
+  }, formatMetric(item.metric))), /*#__PURE__*/React.createElement("div", {
+    className: "progress-bar-track"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `progress-bar-fill ${getProgressColor(item.percentage, item.metric)}`,
+    style: {
+      width: `${Math.min(item.percentage, 100)}%`
+    }
+  }))))), /*#__PURE__*/React.createElement("p", {
+    className: "estimation-disclaimer"
+  }, "⚠️ All values are estimates and may not be exact. Use as a general guide only.")), userData.longTermMemory && userData.longTermMemory.length > 0 && /*#__PURE__*/React.createElement("div", {
+    className: "profile-section"
+  }, /*#__PURE__*/React.createElement("h2", null, "What Plus Remembers About You"), /*#__PURE__*/React.createElement("div", {
+    className: "memory-list"
+  }, userData.longTermMemory.map((mem, idx) => /*#__PURE__*/React.createElement("div", {
+    key: idx,
+    className: "memory-item"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "memory-key"
+  }, formatKey(mem.key)), /*#__PURE__*/React.createElement("span", {
+    className: "memory-value"
+  }, mem.value))))), /*#__PURE__*/React.createElement("div", {
+    className: "profile-footer"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-primary",
+    onClick: () => onNavigate('chat')
+  }, "💬 Back to Chat")));
+}
+
+// ===================== Onboarding Page =====================
+function OnboardingPage({
+  onComplete,
+  authFetch,
+  userId
+}) {
+  const [step, setStep] = useState(0);
+  const [profile, setProfile] = useState({
+    age: '',
+    height: '',
+    weight: '',
+    gender: '',
+    conditions: ''
+  });
+  const [goals, setGoals] = useState([]);
+  const [saving, setSaving] = useState(false);
+  const handleNext = () => {
+    if (step === 1 && profile.age && profile.height && profile.weight && profile.gender) {
+      setStep(2);
+    } else if (step === 2) {
+      const bmi = profile.weight / Math.pow(profile.height / 100, 2);
+      setGoals(generateDefaultGoals(profile, bmi));
+      setStep(3);
+    } else if (step === 3) {
+      handleComplete();
+    } else {
+      setStep(step + 1);
+    }
+  };
+  const handleComplete = async () => {
+    setSaving(true);
+    try {
+      // Save profile to server (profile file)
+      await authFetch('/api/user/profile', {
+        method: 'POST',
+        body: JSON.stringify(profile)
+      });
+      // Save goals to server (profile file)
+      if (goals && goals.length > 0) {
+        await authFetch('/api/user/goals', {
+          method: 'POST',
+          body: JSON.stringify({
+            goals
+          })
+        });
+      }
+      onComplete(profile, goals);
+    } catch (e) {
+      console.error('Onboarding save:', e);
+      onComplete(profile, goals); // proceed anyway
+    }
+    setSaving(false);
+  };
+  const canProceed = () => {
+    if (step === 1) return profile.age && profile.height && profile.weight && profile.gender;
+    return true;
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    className: "onboarding-page"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "onboarding-container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "onboarding-character"
+  }, /*#__PURE__*/React.createElement(PlusCharacter, {
+    isStreaming: step === 0
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "onboarding-progress"
+  }, [0, 1, 2, 3].map(i => /*#__PURE__*/React.createElement("div", {
+    key: i,
+    className: `progress-dot ${i === step ? 'active' : ''} ${i < step ? 'done' : ''}`
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "onboarding-content"
+  }, step === 0 && /*#__PURE__*/React.createElement("div", {
+    className: "onboarding-step welcome"
+  }, /*#__PURE__*/React.createElement("h1", null, "Hi, I'm Plus! 💚"), /*#__PURE__*/React.createElement("p", {
+    className: "welcome-text"
+  }, "I'm your personal health buddy! I'll help you track your daily habits, give you friendly nudges, and keep you on track with your health goals."), /*#__PURE__*/React.createElement("p", {
+    className: "welcome-subtext"
+  }, "Let's set up your profile first — it only takes 2 minutes!")), step === 1 && /*#__PURE__*/React.createElement("div", {
+    className: "onboarding-step"
+  }, /*#__PURE__*/React.createElement("h2", null, "Tell me about yourself"), /*#__PURE__*/React.createElement("p", {
+    className: "step-hint"
+  }, "This helps me personalize your health targets"), /*#__PURE__*/React.createElement("div", {
+    className: "onboarding-form"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "form-row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "form-field"
+  }, /*#__PURE__*/React.createElement("label", null, "Age"), /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    value: profile.age,
+    onChange: e => setProfile({
+      ...profile,
+      age: e.target.value
+    }),
+    placeholder: "e.g., 28"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "form-field"
+  }, /*#__PURE__*/React.createElement("label", null, "Gender"), /*#__PURE__*/React.createElement("select", {
+    value: profile.gender,
+    onChange: e => setProfile({
+      ...profile,
+      gender: e.target.value
+    })
+  }, /*#__PURE__*/React.createElement("option", {
+    value: ""
+  }, "Select"), /*#__PURE__*/React.createElement("option", {
+    value: "Male"
+  }, "Male"), /*#__PURE__*/React.createElement("option", {
+    value: "Female"
+  }, "Female"), /*#__PURE__*/React.createElement("option", {
+    value: "Other"
+  }, "Other")))), /*#__PURE__*/React.createElement("div", {
+    className: "form-row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "form-field"
+  }, /*#__PURE__*/React.createElement("label", null, "Height (cm)"), /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    value: profile.height,
+    onChange: e => setProfile({
+      ...profile,
+      height: e.target.value
+    }),
+    placeholder: "e.g., 170"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "form-field"
+  }, /*#__PURE__*/React.createElement("label", null, "Weight (kg)"), /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    value: profile.weight,
+    onChange: e => setProfile({
+      ...profile,
+      weight: e.target.value
+    }),
+    placeholder: "e.g., 65"
+  })))), profile.height && profile.weight && /*#__PURE__*/React.createElement("div", {
+    className: "bmi-preview"
+  }, "BMI: ", (profile.weight / Math.pow(profile.height / 100, 2)).toFixed(1), " — ", (() => {
+    const bmi = profile.weight / Math.pow(profile.height / 100, 2);
+    if (bmi < 18.5) return 'Underweight';
+    if (bmi < 25) return 'Healthy Range';
+    if (bmi < 30) return 'Overweight';
+    return 'Obese Range';
+  })())), step === 2 && /*#__PURE__*/React.createElement("div", {
+    className: "onboarding-step"
+  }, /*#__PURE__*/React.createElement("h2", null, "Any health conditions? (Optional)"), /*#__PURE__*/React.createElement("p", {
+    className: "step-hint"
+  }, "Tell me about any health conditions or goals. I'll create personalized targets!"), /*#__PURE__*/React.createElement("textarea", {
+    className: "conditions-input",
+    value: profile.conditions,
+    onChange: e => setProfile({
+      ...profile,
+      conditions: e.target.value
+    }),
+    placeholder: "e.g., 'I want to control my cholesterol level' or 'I'm prediabetic and need to watch my sugar'",
+    rows: 4
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "step-note"
+  }, "Don't have a health report? No worries! Just type your goals in plain English. 😊")), step === 3 && /*#__PURE__*/React.createElement("div", {
+    className: "onboarding-step"
+  }, /*#__PURE__*/React.createElement("h2", null, "Your Health Targets 🎯"), /*#__PURE__*/React.createElement("p", {
+    className: "step-hint"
+  }, "Based on your profile, here are your personalized daily targets. You can always change these by chatting with me!"), /*#__PURE__*/React.createElement("div", {
+    className: "goals-preview"
+  }, goals.map((goal, idx) => /*#__PURE__*/React.createElement("div", {
+    key: idx,
+    className: `goal-preview-card ${goal.category}`
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "goal-preview-icon"
+  }, goal.category === 'diet' ? '🍽️' : '🏃'), /*#__PURE__*/React.createElement("span", {
+    className: "goal-preview-text"
+  }, formatMetric(goal.metric), ": ", goal.target, " ", goal.unit)))), /*#__PURE__*/React.createElement("p", {
+    className: "step-note"
+  }, "These are estimates based on standard health guidelines. Chat with me anytime to adjust!"))), /*#__PURE__*/React.createElement("div", {
+    className: "onboarding-nav"
+  }, step > 0 && /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-secondary",
+    onClick: () => setStep(step - 1)
+  }, "← Back"), /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-primary",
+    onClick: handleNext,
+    disabled: !canProceed() || saving
+  }, saving ? 'Saving...' : step === 0 ? "Let's Go! 🚀" : step === 3 ? 'Start Chatting! 💚' : 'Next →'))));
+}
+
+// ===================== App =====================
+function App() {
+  const [userId] = useState(() => {
+    let id = localStorage.getItem('aihed_uid');
+    if (!id) {
+      id = 'user_' + Math.random().toString(36).substring(2, 11) + Date.now().toString(36);
+      localStorage.setItem('aihed_uid', id);
+    }
+    return id;
+  });
+  const {
+    token,
+    authFetch,
+    ready
+  } = useSession(userId);
+  const [currentPage, setCurrentPage] = useState('chat');
+  const [hasProfile, setHasProfile] = useState(false);
+  const [showOnboarding, setShowOnboarding] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
+  const [profileChecked, setProfileChecked] = useState(false);
+
+  // Check if user has a profile once session is ready
+  useEffect(() => {
+    if (!ready || !token) return;
+    let active = true;
+    (async () => {
+      try {
+        const res = await authFetch('/api/user/data');
+        if (!active) return;
+        if (res.ok) {
+          const data = await res.json();
+          if (data.profile && data.profile.age) {
+            setHasProfile(true);
+            setShowOnboarding(false);
+          } else {
+            setShowOnboarding(true);
+          }
+        } else {
+          setShowOnboarding(true);
+        }
+      } catch (e) {
+        console.error('Profile check:', e);
+        setShowOnboarding(true);
+      }
+      setProfileChecked(true);
+    })();
+  }, [ready, token]);
+  const handleProfileComplete = async (profile, goals) => {
+    // Onboarding page already saved profile+goals via authFetch
+    setHasProfile(true);
+    setShowOnboarding(false);
+    setCurrentPage('chat');
+    setRefreshKey(k => k + 1);
+  };
+  const handleProfileUpdate = async (profile, goals) => {
+    await authFetch('/api/user/profile', {
+      method: 'POST',
+      body: JSON.stringify(profile)
+    });
+    if (goals) await authFetch('/api/user/goals', {
+      method: 'POST',
+      body: JSON.stringify({
+        goals
+      })
+    });
+    setRefreshKey(k => k + 1);
+  };
+
+  // Loading state
+  if (!ready || !profileChecked) {
+    return /*#__PURE__*/React.createElement("div", {
+      style: {
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'var(--bg-main)'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        textAlign: 'center'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: '40px',
+        marginBottom: '12px',
+        animation: 'heartbeat 2s ease-in-out infinite'
+      }
+    }, "💚"), /*#__PURE__*/React.createElement("p", {
+      style: {
+        color: 'var(--text-muted)',
+        fontSize: '15px'
+      }
+    }, "Connecting to Plus...")));
+  }
+  if (showOnboarding && !hasProfile) {
+    return /*#__PURE__*/React.createElement(OnboardingPage, {
+      onComplete: handleProfileComplete,
+      authFetch: authFetch,
+      userId: userId
+    });
+  }
+  return /*#__PURE__*/React.createElement("div", {
+    className: "app-container"
+  }, /*#__PURE__*/React.createElement("nav", {
+    className: "app-nav"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "nav-brand"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "nav-logo"
+  }, "💚"), /*#__PURE__*/React.createElement("span", {
+    className: "nav-title"
+  }, "Healthier Every Day")), /*#__PURE__*/React.createElement("div", {
+    className: "nav-links"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: `nav-link ${currentPage === 'chat' ? 'active' : ''}`,
+    onClick: () => setCurrentPage('chat')
+  }, "Chat"), /*#__PURE__*/React.createElement("button", {
+    className: `nav-link ${currentPage === 'profile' ? 'active' : ''}`,
+    onClick: () => setCurrentPage('profile')
+  }, "Profile"))), /*#__PURE__*/React.createElement("main", {
+    className: "app-main"
+  }, currentPage === 'chat' && /*#__PURE__*/React.createElement(ChatPage, {
+    authFetch: authFetch,
+    userId: userId,
+    onNavigate: setCurrentPage,
+    refreshTrigger: refreshKey
+  }), currentPage === 'profile' && /*#__PURE__*/React.createElement(ProfilePage, {
+    authFetch: authFetch,
+    userId: userId,
+    onNavigate: setCurrentPage,
+    onProfileUpdate: handleProfileUpdate,
+    refreshKey: refreshKey
+  })));
+}
+
+// ===================== Helpers =====================
+function formatMetric(metric) {
+  const map = {
+    calories: 'Calories',
+    sugar: 'Sugar',
+    fat: 'Fat',
+    protein: 'Protein',
+    water: 'Water',
+    steps: 'Steps',
+    exercise: 'Exercise',
+    saturated_fat: 'Saturated Fat'
+  };
+  return map[metric] || metric.charAt(0).toUpperCase() + metric.slice(1);
+}
+function formatKey(key) {
+  return key.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+}
+function getProgressColor(percentage, metric) {
+  const limitMetrics = ['calories', 'sugar', 'fat', 'saturated_fat'];
+  if (limitMetrics.includes(metric)) {
+    if (percentage < 70) return 'good';
+    if (percentage < 100) return 'warning';
+    return 'over';
+  }
+  if (percentage >= 100) return 'good';
+  if (percentage >= 50) return 'warning';
+  return 'low';
+}
+function generateDefaultGoals(profile, bmi) {
+  const age = parseInt(profile.age) || 30;
+  const weight = parseFloat(profile.weight) || 65;
+  const height = parseFloat(profile.height) || 170;
+  const gender = profile.gender || 'Male';
+  let bmr;
+  if (gender === 'Male') {
+    bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+  } else {
+    bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+  }
+  const dailyCalories = Math.round(bmr * 1.55 / 10) * 10;
+  const goals = [{
+    metric: 'calories',
+    target: dailyCalories,
+    unit: 'kcal/day',
+    category: 'diet'
+  }, {
+    metric: 'sugar',
+    target: 50,
+    unit: 'g/day',
+    category: 'diet'
+  }, {
+    metric: 'fat',
+    target: Math.round(dailyCalories * 0.3 / 9),
+    unit: 'g/day',
+    category: 'diet'
+  }, {
+    metric: 'protein',
+    target: Math.round(weight * 0.8),
+    unit: 'g/day',
+    category: 'diet'
+  }, {
+    metric: 'water',
+    target: 2000,
+    unit: 'ml/day',
+    category: 'diet'
+  }, {
+    metric: 'steps',
+    target: 8000,
+    unit: 'steps/day',
+    category: 'exercise'
+  }];
+  if (profile.conditions) {
+    const cond = profile.conditions.toLowerCase();
+    if (cond.includes('cholesterol')) {
+      goals[2] = {
+        metric: 'fat',
+        target: 50,
+        unit: 'g/day',
+        category: 'diet'
+      };
+      goals.push({
+        metric: 'saturated_fat',
+        target: 15,
+        unit: 'g/day',
+        category: 'diet'
+      });
+    }
+    if (cond.includes('sugar') || cond.includes('diabet')) {
+      goals[1] = {
+        metric: 'sugar',
+        target: 25,
+        unit: 'g/day',
+        category: 'diet'
+      };
+    }
+    if (cond.includes('weight') || bmi && bmi > 25) {
+      goals[0] = {
+        metric: 'calories',
+        target: Math.round(dailyCalories * 0.8 / 10) * 10,
+        unit: 'kcal/day',
+        category: 'diet'
+      };
+      goals.push({
+        metric: 'exercise',
+        target: 45,
+        unit: 'min/day',
+        category: 'exercise'
+      });
+    }
+  }
+  return goals;
+}
+
+// ===================== Render =====================
+ReactDOM.createRoot(document.getElementById('root')).render(/*#__PURE__*/React.createElement(App, null));
+
+} // end of React/ReactDOM guard
+
+  </script>
+</body>
+</html>

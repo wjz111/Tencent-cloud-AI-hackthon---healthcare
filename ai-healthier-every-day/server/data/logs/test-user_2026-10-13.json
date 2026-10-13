@@ -1,0 +1,16 @@
+{
+  "foods": [
+    {
+      "food": "nasi lemak",
+      "calories": 570,
+      "sugar": 4.5,
+      "fat": 27,
+      "protein": 15,
+      "timestamp": "2026-10-13T08:16:32.829Z"
+    }
+  ],
+  "totalCalories": 570,
+  "totalSugar": 4.5,
+  "totalFat": 27,
+  "totalProtein": 15
+}

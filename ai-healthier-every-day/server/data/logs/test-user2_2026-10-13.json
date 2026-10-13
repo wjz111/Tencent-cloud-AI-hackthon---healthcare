@@ -1,0 +1,16 @@
+{
+  "foods": [
+    {
+      "food": "char kway teow",
+      "calories": 420,
+      "sugar": 6,
+      "fat": 21,
+      "protein": 12,
+      "timestamp": "2026-10-13T08:19:33.241Z"
+    }
+  ],
+  "totalCalories": 420,
+  "totalSugar": 6,
+  "totalFat": 21,
+  "totalProtein": 12
+}
