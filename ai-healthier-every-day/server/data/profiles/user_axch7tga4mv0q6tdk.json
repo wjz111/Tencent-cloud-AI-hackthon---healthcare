@@ -2,15 +2,15 @@
   "id": "user_axch7tga4mv0q6tdk",
   "profile": {
     "age": "26",
-    "height": "168",
-    "weight": "71",
+    "height": "170",
+    "weight": "65",
     "gender": "Female",
-    "conditions": "I have fat liver"
+    "conditions": ""
   },
   "goals": [
     {
       "metric": "calories",
-      "target": 1820,
+      "target": 2200,
       "unit": "kcal/day",
       "category": "diet"
     },
@@ -22,13 +22,13 @@
     },
     {
       "metric": "fat",
-      "target": 76,
+      "target": 73,
       "unit": "g/day",
       "category": "diet"
     },
     {
       "metric": "protein",
-      "target": 57,
+      "target": 52,
       "unit": "g/day",
       "category": "diet"
     },
@@ -43,16 +43,10 @@
       "target": 8000,
       "unit": "steps/day",
       "category": "exercise"
-    },
-    {
-      "metric": "exercise",
-      "target": 45,
-      "unit": "min/day",
-      "category": "exercise"
     }
   ],
   "longTermMemory": [],
   "timezone": "Asia/Singapore",
   "createdAt": "2026-10-09T08:51:17.967Z",
-  "updatedAt": "2026-10-09T08:56:15.670Z"
+  "updatedAt": "2026-10-16T03:29:24.677Z"
 }

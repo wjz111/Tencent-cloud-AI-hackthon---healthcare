@@ -960,10 +960,20 @@ function ProfilePage({
   const handleSave = async () => {
     let generatedGoals = [...goals];
     const bmi = profile.height && profile.weight ? profile.weight / Math.pow(profile.height / 100, 2) : null;
-    if (generatedGoals.length === 0 || editing && profile.conditions !== userData.profile?.conditions) {
+    // Regenerate goals whenever any goal-affecting profile field changes
+    const profileChanged =
+      !userData ||
+      !userData.profile ||
+      String(profile.age) !== String(userData.profile.age) ||
+      String(profile.height) !== String(userData.profile.height) ||
+      String(profile.weight) !== String(userData.profile.weight) ||
+      String(profile.gender) !== String(userData.profile.gender) ||
+      String(profile.conditions) !== String(userData.profile.conditions);
+    if (generatedGoals.length === 0 || profileChanged) {
       generatedGoals = generateDefaultGoals(profile, bmi);
     }
     await onProfileUpdate(profile, generatedGoals);
+    setGoals(generatedGoals); // update local display in real time
     setEditing(false);
     fetchProgress();
   };
